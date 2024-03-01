@@ -1,5 +1,7 @@
 import 'package:attendance/splash.dart';
 import 'package:flutter/material.dart';
+
+import 'login/login_screen.dart';
 import 'my_theme.dart';
 
 void main() {
@@ -15,6 +17,8 @@ class MyApp extends StatelessWidget {
       initialRoute: SplashScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => SplashScreen(),
+        LoginScreen.routeName: (context) => LoginScreen(),
+        // HomeScreen.routeName: (context) => HomeScreen(),
       },
       theme: MyTheme.lightTheme,
     );
