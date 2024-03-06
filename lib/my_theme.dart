@@ -8,16 +8,15 @@ class MyTheme {
   static Color lightgreyColor = Color(0xffABABAB);
   static Color backgroundGreyColor = Color(0xffD9D9D9);
 
-
   static ThemeData lightTheme = ThemeData(
     // appBarTheme: AppBarTheme(backgroundColor: primaryLight, elevation: 0,
     // centerTitle: true,
     //   shape: const RoundedRectangleBorder(
     //     borderRadius: BorderRadius.vertical(
     //     bottom: Radius.circular(40),
-  // ),
-  // ),
-  //   ),
+    // ),
+    // ),
+    //   ),
 
     textTheme: TextTheme(
       titleLarge: TextStyle(
@@ -27,6 +26,5 @@ class MyTheme {
       titleSmall: TextStyle(
           fontSize: 14, fontWeight: FontWeight.w600, color: lightgreyColor),
     ),
-
   );
 }
