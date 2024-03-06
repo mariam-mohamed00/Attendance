@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'login/login_screen.dart';
+
 class SplashScreen extends StatefulWidget {
   static const String routeName = 'Splash Screen';
 
@@ -16,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   _navigatetohome() async {
     await Future.delayed(Duration(seconds: 3), () {});
-    // Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+    Navigator.pushReplacementNamed(context, LoginScreen.routeName);
   }
 
   @override
