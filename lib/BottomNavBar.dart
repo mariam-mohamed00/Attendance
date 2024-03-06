@@ -22,13 +22,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           toolbarHeight: 70,
-          title: Text(
+          title: const Text(
             "Attendenc System",
             style: TextStyle(fontSize: 25),
           ),
           centerTitle: true,
           flexibleSpace: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(29),
                     bottomRight: Radius.circular(29)),
@@ -41,16 +41,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
           actions: [
             InkWell(
               onTap: () {},
-              child: Icon(Icons.logout, size: 25.0),
+              child: const Icon(Icons.logout, size: 25.0),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             )
           ],
         ),
         body: tabs[selectedIndex],
         bottomNavigationBar: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(0), topRight: Radius.circular(0)),
               gradient: LinearGradient(
@@ -67,33 +67,33 @@ class _BottomNavBarState extends State<BottomNavBar> {
             }),
             items: [
               BottomNavyBarItem(
-                  icon: Icon(
+                  icon: const Icon(
                     size: 30,
                     Icons.qr_code_scanner_sharp,
                   ),
-                  title: Text(
+                  title: const Text(
                     'Scan',
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                   activeColor: Colors.black26,
                   inactiveColor: Colors.white),
               BottomNavyBarItem(
-                  icon: Icon(
+                  icon: const Icon(
                     size: 30,
                     Icons.person,
                   ),
-                  title: Text(
+                  title: const Text(
                     'Profile',
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                   activeColor: Colors.black26,
                   inactiveColor: Colors.white),
               BottomNavyBarItem(
-                  icon: Icon(
+                  icon: const Icon(
                     size: 30,
                     Icons.settings_suggest_sharp,
                   ),
-                  title: Text(
+                  title: const Text(
                     'Setting',
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
@@ -105,8 +105,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
   }
 
   List<Widget> tabs = [
-    Scan(),
-    ProfilePerson(),
-    Changepassword(),
+    const Scan(),
+    const ProfilePerson(),
+    const Changepassword(),
   ];
 }
