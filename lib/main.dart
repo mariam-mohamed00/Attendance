@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: BottomNavBar.routeName,
       routes: {
-        //SplashScreen.routeName: (context) => SplashScreen(),
+        SplashScreen.routeName: (context) => SplashScreen(),
         BottomNavBar.routeName: (context) => BottomNavBar(),
       },
       theme: MyTheme.lightTheme,
