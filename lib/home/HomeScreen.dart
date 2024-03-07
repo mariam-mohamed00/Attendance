@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
           elevation: 0.0,
           toolbarHeight: 70,
           title: const Text(
-            "Attendance System",
+            "Attendance",
             style: TextStyle(fontSize: 25),
           ),
           centerTitle: true,

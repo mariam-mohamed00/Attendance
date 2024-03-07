@@ -1,7 +1,9 @@
 import 'package:attendance/home/HomeScreen.dart';
 import 'package:flutter/material.dart';
+
 import '../../my_theme.dart';
 import 'custom_text_form_field.dart';
+import 'forget_password/forget_pass.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = 'login';
@@ -22,14 +24,14 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(children: [
           Center(
               child: Padding(
-                padding:
+            padding:
                 EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.13),
-                child: Text('Log In',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge!
-                        .copyWith(fontFamily: 'Inika')),
-              )),
+            child: Text('Log In',
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(fontFamily: 'Inika')),
+          )),
           Divider(
             color: MyTheme.blackColor,
             thickness: 4,
@@ -113,8 +115,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 TextButton(
                   onPressed: () {
-                    // Navigator.of(context)
-                    //     .pushNamed(ForgetPasswordScreen.routeName);
+                    Navigator.of(context)
+                        .pushNamed(ForgetPasswordScreen.routeName);
                   },
                   child: Column(
                     children: [

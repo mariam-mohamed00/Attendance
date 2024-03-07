@@ -77,13 +77,14 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Inika
-       fonts:
-         - asset: assets/fonts/Inika-Bold.ttf
 
-     - family: Cambo
-       fonts:
-         - asset: assets/fonts/Cambo-Regular.ttf
+    - family: Inika
+      fonts:
+        - asset: assets/fonts/Inika-Bold.ttf
+
+    - family: Combo
+      fonts:
+        - asset: assets/fonts/Cambo-Regular.ttf
 
     - family: Imprima
       fonts:
@@ -97,6 +98,7 @@ flutter:
       fonts:
         - asset: assets/fonts/Montserrat-Bold.ttf
         - asset: assets/fonts/Montserrat-Regular.ttf
+
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
