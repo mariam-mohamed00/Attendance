@@ -36,7 +36,9 @@ class CustomTextFormField extends StatelessWidget {
             child: Text(label),
           ),
           labelStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
-              color: MyTheme.blackColor.withOpacity(0.5), fontFamily: 'Cambo'),
+                color: MyTheme.blackColor.withOpacity(0.5),
+                fontFamily: 'Cambo',
+              ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: MyTheme.backgroundGreyColor),
             borderRadius: BorderRadius.circular(15),
