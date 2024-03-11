@@ -1,3 +1,5 @@
+import 'package:attendance/home/tabs/profile/Profile.dart';
+import 'package:attendance/home/tabs/settings/SettingChangePassword.dart';
 import 'package:attendance/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +26,11 @@ class MyApp extends StatelessWidget {
         HomeScreen.routeName: (context) => HomeScreen(),
         ForgetPasswordScreen.routeName: (context) => ForgetPasswordScreen(),
         ForgetCode.routeName: (context) => ForgetCode(),
-        ForgetChangePassword.routeName: (context) => ForgetChangePassword()
+        ForgetChangePassword.routeName: (context) => ForgetChangePassword(),
+        SettingChangePassword.routeName: (context) => SettingChangePassword(),
+        ProfilePerson.routeName: (context) => ProfilePerson()
+
+        // ForgetChangePassword.routeName: (context) => ForgetChangePassword()
       },
       theme: MyTheme.lightTheme,
     );

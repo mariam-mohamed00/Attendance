@@ -1,6 +1,6 @@
 import 'package:attendance/home/tabs/profile/Profile.dart';
 import 'package:attendance/home/tabs/scan/scan.dart';
-import 'package:attendance/home/tabs/settings/ChangePassword.dart';
+import 'package:attendance/home/tabs/settings/setting_screen.dart';
 import 'package:attendance/login/login_screen.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
@@ -110,6 +110,6 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> tabs = [
     const Scan(),
     const ProfilePerson(),
-    const Changepassword(),
+    SettingScreen(),
   ];
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class ProfilePerson extends StatefulWidget {
   const ProfilePerson({Key? key}) : super(key: key);
+  static const String routeName = 'Profile';
 
   @override
   State<ProfilePerson> createState() => _ProfilePersonState();

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../home/HomeScreen.dart';
 import '../../my_theme.dart';
+import '../custom_text_form_field.dart';
 
 class ForgetChangePassword extends StatelessWidget {
   static const String routeName = 'Change Password';
@@ -41,135 +42,95 @@ class ForgetChangePassword extends StatelessWidget {
             ),
             Form(
               key: formKey,
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('New Password',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium!
-                            .copyWith(
-                                fontFamily: 'Montserrat',
-                                fontSize: 17,
-                                fontWeight: FontWeight.w600)),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 15, horizontal: 20),
-                      child: TextFormField(
-                        obscureText: true,
-                        controller: passwordController,
-                        validator: (text) {
-                          if (text == null || text.trim().isEmpty) {
-                            return 'Enter new password to change';
-                          }
-                          if (text.length < 6) {
-                            return 'At least 6 characters to change the password';
-                          }
-                          return null;
-                        },
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          hintText: '*********',
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(color: Color(0xFF878787)),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(color: Color(0xFF878787)),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(color: Color(0xFF878787)),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(color: Color(0xFF878787)),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                      ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text('New Password',
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          fontFamily: 'Montserrat',
+                          fontSize: 17,
+                          fontWeight: FontWeight.w600)),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
+                    child: CustomTextFormField(
+                      isPassword: true,
+                      hintStyle: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(
+                              fontFamily: 'Cambo',
+                              color: MyTheme.lightgreyColor),
+                      hint: '******',
+                      keyboardType: TextInputType.number,
+                      controller: passwordController,
+                      validator: (text) {
+                        if (text == null || text.trim().isEmpty) {
+                          return 'Please enter a new password';
+                        }
+                        if (text.length < 6) {
+                          return 'please enter at least 6 characters';
+                        }
+                        return null;
+                      },
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.018,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  Text('Confirm Password',
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          fontFamily: 'Montserrat',
+                          fontSize: 17,
+                          fontWeight: FontWeight.w600)),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
+                    child: CustomTextFormField(
+                      isPassword: true,
+                      hintStyle: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(
+                              fontFamily: 'Cambo',
+                              color: MyTheme.lightgreyColor),
+                      hint: '******',
+                      keyboardType: TextInputType.number,
+                      controller: confirmPasswordController,
+                      validator: (text) {
+                        if (text == null || text.trim().isEmpty) {
+                          return 'Please enter your confirm password';
+                        }
+                        if (confirmPasswordController.text !=
+                            passwordController.text) {
+                          return 'Password mismatch';
+                        }
+                        return null;
+                      },
                     ),
-                    Text('Confirm Password',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium!
-                            .copyWith(
-                                fontFamily: 'Montserrat',
-                                fontSize: 17,
-                                fontWeight: FontWeight.w600)),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 15, horizontal: 20),
-                      child: TextFormField(
-                        controller: confirmPasswordController,
-                        validator: (text) {
-                          if (text == null || text.trim().isEmpty) {
-                            return 'Please enter your password';
-                          }
-                          if (confirmPasswordController.text !=
-                              passwordController.text) {
-                            return 'Password mismatch';
-                          }
-                          return null;
-                        },
-                        keyboardType: TextInputType.number,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          hintText: '*********',
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(color: Color(0xFF878787)),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(color: Color(0xFF878787)),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(color: Color(0xFF878787)),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(color: Color(0xFF878787)),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                      ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.05,
+                  ),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        check(context);
+                      },
+                      style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 20, horizontal: 80),
+                          backgroundColor: MyTheme.primaryLight,
+                          shape: const StadiumBorder()),
+                      child: Text('Finish',
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: MyTheme.whiteColor,
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.w700)),
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.07,
-                    ),
-                    Center(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          check(context);
-                        },
-                        style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 20, horizontal: 80),
-                            backgroundColor: MyTheme.primaryLight,
-                            shape: const StadiumBorder()),
-                        child: Text('Finish',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: MyTheme.whiteColor,
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.w700)),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ]),

@@ -1,3 +1,4 @@
+import 'package:attendance/login/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 import '../../my_theme.dart';
@@ -18,7 +19,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             right: MediaQuery.of(context).size.height * 0.02,
           ),
           child:
-              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
             Padding(
               padding: EdgeInsets.only(
                 top: MediaQuery.of(context).size.height * 0.1,
@@ -50,8 +51,16 @@ class ForgetPasswordScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 15, horizontal: 20),
-                    child: TextFormField(
+                        vertical: 10, horizontal: 20),
+                    child: CustomTextFormField(
+                      hintStyle: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(
+                              fontFamily: 'Cambo',
+                              color: MyTheme.lightgreyColor),
+                      hint: 'lorem@gmail.com',
+                      keyboardType: TextInputType.emailAddress,
                       controller: emailController,
                       validator: (text) {
                         if (text == null || text.trim().isEmpty) {
@@ -66,42 +75,10 @@ class ForgetPasswordScreen extends StatelessWidget {
 
                         return null;
                       },
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        hintText: 'lorem@gmail.com',
-                        hintStyle: Theme.of(context)
-                            .textTheme
-                            .titleMedium!
-                            .copyWith(
-                                fontFamily: 'Montserrat',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: MyTheme.lightgreyColor),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Color(0xFF878787)),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Color(0xFF878787)),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Color(0xFF878787)),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Color(0xFF878787)),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
                     ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.07,
+                    height: MediaQuery.of(context).size.height * 0.05,
                   ),
                   ElevatedButton(
                     onPressed: () {
