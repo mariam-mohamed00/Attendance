@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:simple_shadow/simple_shadow.dart';
 
 import '../../my_theme.dart';
+import '../../providers/app_config_provider.dart';
 import 'forget_change_password.dart';
 
 class ForgetCode extends StatelessWidget {
@@ -10,7 +13,21 @@ class ForgetCode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return Scaffold(
+      backgroundColor: provider.appTheme == ThemeMode.light
+          ? MyTheme.whiteColor
+          : MyTheme.primaryDark,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: IconThemeData(
+          color: provider.appTheme == ThemeMode.light
+              ? MyTheme.blackColor
+              : MyTheme.whiteColor,
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
@@ -18,25 +35,48 @@ class ForgetCode extends StatelessWidget {
               right: MediaQuery.of(context).size.height * 0.02),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Center(
+              child: SimpleShadow(
+                opacity: 0.25,
+                // Default: 0.5
+                color: MyTheme.primaryLight,
+                // Default: Black
+                offset: const Offset(26, 10),
+                // Default: Offset(2, 2)
+                sigma: 3,
+                child: Image(
+                  width: 300,
+                  height: 200,
+                  fit: BoxFit.fill,
+                  color: MyTheme.primaryLight,
+                  image: const AssetImage('assets/images/confirm_logo.png'),
+                ), // Default: 2
+              ),
+            ),
+
             Padding(
               padding: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height * 0.1,
+                top: MediaQuery.of(context).size.height * 0.05,
                 bottom: MediaQuery.of(context).size.height * 0.03,
               ),
               child: Text('Forget Password',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge!
-                      .copyWith(fontFamily: 'Montserrat', fontSize: 24)),
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      fontFamily: 'Montserrat',
+                      fontSize: 24,
+                      color: provider.appTheme == ThemeMode.light
+                          ? MyTheme.blackColor
+                          : MyTheme.whiteColor)),
             ),
             Text(
                 'Type the OTP you received on your e-mail to continue resetting your password.',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium!
-                    .copyWith(fontFamily: 'Montserrat', fontSize: 14)),
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    fontFamily: 'Montserrat',
+                    fontSize: 14,
+                    color: provider.appTheme == ThemeMode.light
+                        ? MyTheme.blackColor
+                        : MyTheme.whiteColor)),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
+              height: MediaQuery.of(context).size.height * 0.08,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -117,7 +157,7 @@ class ForgetCode extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
-            Image.asset('assets/images/code_password.png'),
+            // Image.asset('assets/images/code_password.png'),
           ]),
         ),
       ),

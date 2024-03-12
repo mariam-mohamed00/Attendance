@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../login/custom_text_form_field.dart';
 import '../../../my_theme.dart';
+import '../../../providers/app_config_provider.dart';
 import '../../HomeScreen.dart';
 
 class SettingChangePassword extends StatefulWidget {
@@ -13,16 +15,18 @@ class SettingChangePassword extends StatefulWidget {
 
 class _SettingChangePasswordState extends State<SettingChangePassword> {
   var formKey = GlobalKey<FormState>();
-
   TextEditingController passwordController = TextEditingController();
-
   TextEditingController newPasswordController = TextEditingController();
-
   TextEditingController confirmNewPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return Scaffold(
+      backgroundColor: provider.appTheme == ThemeMode.light
+          ? MyTheme.whiteColor
+          : MyTheme.primaryDark,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
@@ -53,6 +57,9 @@ class _SettingChangePasswordState extends State<SettingChangePassword> {
             Text(
                 'You’ll be logged out of all sessions except this one to protect your account if anyone is trying to gain access.',
                 style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    color: provider.appTheme == ThemeMode.light
+                        ? MyTheme.blackColor
+                        : MyTheme.whiteColor,
                     fontFamily: 'Montserrat',
                     fontSize: 14,
                     fontWeight: FontWeight.w700)),
@@ -70,6 +77,9 @@ class _SettingChangePasswordState extends State<SettingChangePassword> {
                             .textTheme
                             .titleMedium!
                             .copyWith(
+                            color: provider.appTheme == ThemeMode.light
+                                    ? MyTheme.blackColor
+                                    : MyTheme.whiteColor,
                                 fontFamily: 'Montserrat',
                                 fontSize: 17,
                                 fontWeight: FontWeight.w600)),
@@ -83,7 +93,9 @@ class _SettingChangePasswordState extends State<SettingChangePassword> {
                             .titleMedium!
                             .copyWith(
                                 fontFamily: 'Cambo',
-                                color: MyTheme.lightgreyColor),
+                                color: provider.appTheme == ThemeMode.light
+                                    ? MyTheme.greyTextColor
+                                    : MyTheme.lightgreyColor),
                         hint: 'Curent Password',
                         keyboardType: TextInputType.number,
                         controller: passwordController,
@@ -103,6 +115,9 @@ class _SettingChangePasswordState extends State<SettingChangePassword> {
                             .textTheme
                             .titleMedium!
                             .copyWith(
+                            color: provider.appTheme == ThemeMode.light
+                                    ? MyTheme.blackColor
+                                    : MyTheme.whiteColor,
                                 fontFamily: 'Montserrat',
                                 fontSize: 17,
                                 fontWeight: FontWeight.w600)),
@@ -115,7 +130,9 @@ class _SettingChangePasswordState extends State<SettingChangePassword> {
                             .titleMedium!
                             .copyWith(
                                 fontFamily: 'Cambo',
-                                color: MyTheme.lightgreyColor),
+                                color: provider.appTheme == ThemeMode.light
+                                    ? MyTheme.greyTextColor
+                                    : MyTheme.lightgreyColor),
                         hint: '******',
                         keyboardType: TextInputType.number,
                         isPassword: true,
@@ -139,6 +156,9 @@ class _SettingChangePasswordState extends State<SettingChangePassword> {
                             .textTheme
                             .titleMedium!
                             .copyWith(
+                            color: provider.appTheme == ThemeMode.light
+                                    ? MyTheme.blackColor
+                                    : MyTheme.whiteColor,
                                 fontFamily: 'Montserrat',
                                 fontSize: 17,
                                 fontWeight: FontWeight.w600)),
@@ -151,7 +171,9 @@ class _SettingChangePasswordState extends State<SettingChangePassword> {
                             .titleMedium!
                             .copyWith(
                                 fontFamily: 'Cambo',
-                                color: MyTheme.lightgreyColor),
+                                color: provider.appTheme == ThemeMode.light
+                                    ? MyTheme.greyTextColor
+                                    : MyTheme.lightgreyColor),
                         hint: '******',
                         keyboardType: TextInputType.number,
                         isPassword: true,

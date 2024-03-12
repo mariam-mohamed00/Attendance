@@ -1,7 +1,10 @@
 import 'package:attendance/home/tabs/profile/Profile.dart';
-import 'package:attendance/home/tabs/settings/SettingChangePassword.dart';
+import 'package:attendance/home/tabs/settings/setting_change_password.dart';
+import 'package:attendance/home/tabs/settings/theme/theme_screen.dart';
+import 'package:attendance/providers/app_config_provider.dart';
 import 'package:attendance/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'home/HomeScreen.dart';
 import 'login/forget_password/forget_change_password.dart';
@@ -11,12 +14,17 @@ import 'login/login_screen.dart';
 import 'my_theme.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => AppConfigProvider(),
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: SplashScreen.routeName,
@@ -28,11 +36,12 @@ class MyApp extends StatelessWidget {
         ForgetCode.routeName: (context) => ForgetCode(),
         ForgetChangePassword.routeName: (context) => ForgetChangePassword(),
         SettingChangePassword.routeName: (context) => SettingChangePassword(),
-        ProfilePerson.routeName: (context) => ProfilePerson()
-
-        // ForgetChangePassword.routeName: (context) => ForgetChangePassword()
+        ProfilePerson.routeName: (context) => ProfilePerson(),
+        ThemeScreen.routeName: (context) => ThemeScreen()
       },
       theme: MyTheme.lightTheme,
+      darkTheme: MyTheme.darkTheme,
+      themeMode: provider.appTheme,
     );
   }
 }
