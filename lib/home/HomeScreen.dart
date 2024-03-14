@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> tabs = [
     QRViewExample(),
-    const ProfilePerson(),
+    const profile(),
     const Changepassword(),
   ];
 }
