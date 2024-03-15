@@ -131,8 +131,14 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   List<Widget> tabs = [
+// <<<<<<< devYM
+    QRViewExample(),
+//     const profile(),
+//     const Changepassword(),
+// =======
     const Scan(),
     const ProfilePerson(),
     SettingScreen(),
+// >>>>>>> development
   ];
 }

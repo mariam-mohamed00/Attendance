@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'home/HomeScreen.dart';
+import 'home/tabs/scan/scan.dart';
 import 'login/forget_password/forget_change_password.dart';
 import 'login/forget_password/forget_code.dart';
 import 'login/forget_password/forget_pass.dart';
@@ -35,9 +36,13 @@ class MyApp extends StatelessWidget {
         ForgetPasswordScreen.routeName: (context) => ForgetPasswordScreen(),
         ForgetCode.routeName: (context) => ForgetCode(),
         ForgetChangePassword.routeName: (context) => ForgetChangePassword(),
+// <<<<<<< devYM
+        QRViewExample.routeName: (context) => QRViewExample()
+// =======
         SettingChangePassword.routeName: (context) => SettingChangePassword(),
         ProfilePerson.routeName: (context) => ProfilePerson(),
         ThemeScreen.routeName: (context) => ThemeScreen()
+// >>>>>>> development
       },
       theme: MyTheme.lightTheme,
       darkTheme: MyTheme.darkTheme,
