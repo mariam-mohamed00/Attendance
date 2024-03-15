@@ -1,10 +1,14 @@
 import 'package:attendance/home/tabs/profile/Profile.dart';
 import 'package:attendance/home/tabs/scan/scan.dart';
-import 'package:attendance/home/tabs/settings/ChangePassword.dart';
+import 'package:attendance/home/tabs/settings/setting_screen.dart';
 import 'package:attendance/login/login_screen.dart';
+import 'package:attendance/providers/app_config_provider.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+
+import '../my_theme.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'Home Screen';
@@ -18,7 +22,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return Scaffold(
+        backgroundColor: provider.appTheme == ThemeMode.light
+            ? MyTheme.whiteColor
+            : MyTheme.primaryDark,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0.0,
@@ -38,7 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     begin: Alignment.center,
                     end: Alignment.bottomCenter)),
           ),
-          systemOverlayStyle: SystemUiOverlayStyle.light,
+          systemOverlayStyle: provider.appTheme == ThemeMode.light
+              ? SystemUiOverlayStyle.light
+              : SystemUiOverlayStyle.dark,
           actions: [
             InkWell(
               onTap: () {
@@ -74,42 +85,60 @@ class _HomeScreenState extends State<HomeScreen> {
                     size: 30,
                     Icons.qr_code_scanner_sharp,
                   ),
-                  title: const Text(
+                  title: Text(
                     'Scan',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style: TextStyle(
+                        color: provider.appTheme == ThemeMode.light
+                            ? MyTheme.whiteColor
+                            : MyTheme.primaryDark,
+                        fontSize: 18),
                   ),
-                  activeColor: Colors.black26,
-                  inactiveColor: Colors.white),
+                  activeColor: MyTheme.whiteColor,
+                  inactiveColor: MyTheme.whiteColor),
               BottomNavyBarItem(
                   icon: const Icon(
                     size: 30,
                     Icons.person,
                   ),
-                  title: const Text(
+                  title: Text(
                     'Profile',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style: TextStyle(
+                        color: provider.appTheme == ThemeMode.light
+                            ? MyTheme.whiteColor
+                            : MyTheme.primaryDark,
+                        fontSize: 18),
                   ),
-                  activeColor: Colors.black26,
-                  inactiveColor: Colors.white),
+                  activeColor: MyTheme.whiteColor,
+                  inactiveColor: MyTheme.whiteColor),
               BottomNavyBarItem(
                   icon: const Icon(
                     size: 30,
                     Icons.settings_suggest_sharp,
                   ),
-                  title: const Text(
+                  title: Text(
                     'Setting',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style: TextStyle(
+                        color: provider.appTheme == ThemeMode.light
+                            ? MyTheme.whiteColor
+                            : MyTheme.primaryDark,
+                        fontSize: 18),
                   ),
-                  activeColor: Colors.black26,
-                  inactiveColor: Colors.white),
+                  activeColor: MyTheme.whiteColor,
+                  inactiveColor: MyTheme.whiteColor),
             ],
           ),
         ));
   }
 
   List<Widget> tabs = [
+// <<<<<<< devYM
     QRViewExample(),
-    const profile(),
-    const Changepassword(),
+//     const profile(),
+//     const Changepassword(),
+// =======
+    const Scan(),
+    const ProfilePerson(),
+    SettingScreen(),
+// >>>>>>> development
   ];
 }

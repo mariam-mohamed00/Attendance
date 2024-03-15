@@ -1,62 +1,63 @@
+import 'package:attendance/providers/app_config_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../my_theme.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  String label;
+  String hint;
+  TextStyle hintStyle;
   TextEditingController controller;
   TextInputType keyboardType;
   String? Function(String?)? validator;
   bool isPassword;
-  Icon prefixIcon;
+  Icon? prefixIcon;
 
-  CustomTextFormField(
-      {required this.label,
-      required this.keyboardType,
-      required this.controller,
-      required this.validator,
-      required this.prefixIcon,
-      this.isPassword = false});
+  CustomTextFormField({required this.hint,
+    required this.hintStyle,
+    required this.keyboardType,
+    required this.controller,
+    required this.validator,
+    this.prefixIcon,
+    this.isPassword = false});
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: TextFormField(
-        obscureText: isPassword,
-        controller: controller,
-        validator: validator,
-        keyboardType: keyboardType,
-        decoration: InputDecoration(
-          prefixIcon: prefixIcon,
-          filled: true,
-          fillColor: MyTheme.backgroundGreyColor,
-          label: Padding(
-            padding: const EdgeInsets.only(left: 42.0),
-            child: Text(label),
+        padding: const EdgeInsets.all(10.0),
+        child: TextFormField(
+          style: TextStyle(
+            color: provider.appTheme == ThemeMode.light
+                ? MyTheme.blackColor
+                : MyTheme.whiteColor,
           ),
-          labelStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
-                color: MyTheme.blackColor.withOpacity(0.5),
-                fontFamily: 'Cambo',
-              ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: MyTheme.backgroundGreyColor),
-            borderRadius: BorderRadius.circular(15),
+          obscureText: isPassword,
+          controller: controller,
+          validator: validator,
+          keyboardType: keyboardType,
+          decoration: InputDecoration(
+            prefixIcon: prefixIcon,
+            hintStyle: hintStyle,
+            hintText: hint,
+            enabledBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Color(0xFF878787)),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Color(0xFF878787)),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Color(0xFF878787)),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Color(0xFF878787)),
+              borderRadius: BorderRadius.circular(15),
+            ),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: MyTheme.backgroundGreyColor),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: MyTheme.backgroundGreyColor),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: MyTheme.backgroundGreyColor),
-            borderRadius: BorderRadius.circular(15),
-          ),
-        ),
-      ),
-    );
+        ));
   }
 }

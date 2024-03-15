@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
-class profile extends StatefulWidget {
-  const profile({Key? key}) : super(key: key);
+// <<<<<<< devYM
+// class profile extends StatefulWidget {
+//   const profile({Key? key}) : super(key: key);
+// =======
+class ProfilePerson extends StatefulWidget {
+  const ProfilePerson({Key? key}) : super(key: key);
+  static const String routeName = 'Profile';
+// >>>>>>> development
 
   @override
   State<profile> createState() => _SignInPage1State();
