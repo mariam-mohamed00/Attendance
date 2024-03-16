@@ -38,14 +38,11 @@ class ForgetCode extends StatelessWidget {
             Center(
               child: SimpleShadow(
                 opacity: 0.25,
-                // Default: 0.5
                 color: MyTheme.primaryLight,
-                // Default: Black
                 offset: const Offset(26, 10),
-                // Default: Offset(2, 2)
                 sigma: 3,
                 child: Image(
-                  width: 300,
+                  width: 260,
                   height: 200,
                   fit: BoxFit.fill,
                   color: MyTheme.primaryLight,
@@ -53,64 +50,140 @@ class ForgetCode extends StatelessWidget {
                 ), // Default: 2
               ),
             ),
-
             Padding(
               padding: EdgeInsets.only(
                 top: MediaQuery.of(context).size.height * 0.05,
                 bottom: MediaQuery.of(context).size.height * 0.03,
               ),
               child: Text('Forget Password',
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontFamily: 'Montserrat',
-                      fontSize: 24,
-                      color: provider.appTheme == ThemeMode.light
-                          ? MyTheme.blackColor
-                          : MyTheme.whiteColor)),
+                  style: Theme.of(context).textTheme.titleMedium),
             ),
             Text(
-                'Type the OTP you received on your e-mail to continue resetting your password.',
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    fontFamily: 'Montserrat',
-                    fontSize: 14,
-                    color: provider.appTheme == ThemeMode.light
-                        ? MyTheme.blackColor
-                        : MyTheme.whiteColor)),
+                'Please enter the 4 digit code that sent to your email address.',
+                style: Theme.of(context).textTheme.titleSmall),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.08,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
+                SizedBox(
                   width: 70,
                   height: 70,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: MyTheme.lightgreyColor,
+                  child: TextField(
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: MyTheme.lightgreyColor.withOpacity(0.15),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: MyTheme.lightgreyColor, width: 3),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: MyTheme.lightgreyColor, width: 3),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.red),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.red),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    // child:
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 70,
                   height: 70,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: MyTheme.lightgreyColor,
+                  child: TextField(
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: MyTheme.lightgreyColor.withOpacity(0.15),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: MyTheme.lightgreyColor, width: 3),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: MyTheme.lightgreyColor, width: 3),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.red),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.red),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    // child:
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 70,
                   height: 70,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: MyTheme.lightgreyColor,
+                  child: TextField(
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: MyTheme.lightgreyColor.withOpacity(0.15),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: MyTheme.lightgreyColor, width: 3),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: MyTheme.lightgreyColor, width: 3),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.red),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.red),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    // child:
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 70,
                   height: 70,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: MyTheme.lightgreyColor,
+                  child: TextField(
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: MyTheme.lightgreyColor.withOpacity(0.15),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: MyTheme.lightgreyColor, width: 3),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: MyTheme.lightgreyColor, width: 3),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.red),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.red),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -123,12 +196,12 @@ class ForgetCode extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text('Resend the mail again.',
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          fontFamily: 'Montserrat',
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: MyTheme.primaryLight)),
+                  InkWell(
+                    onTap: () {},
+                    child: Text("if you don't receive code! resend.",
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            color: MyTheme.primaryLight, fontSize: 16)),
+                  ),
                 ],
               ),
             ),
@@ -147,17 +220,12 @@ class ForgetCode extends StatelessWidget {
                     backgroundColor: MyTheme.primaryLight,
                     shape: const StadiumBorder()),
                 child: Text('Next',
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: MyTheme.whiteColor,
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.w700)),
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(color: Colors.white)),
               ),
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.05,
-            ),
-            // Image.asset('assets/images/code_password.png'),
           ]),
         ),
       ),

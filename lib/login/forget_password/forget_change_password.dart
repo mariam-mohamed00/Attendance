@@ -51,20 +51,10 @@ class ForgetChangePassword extends StatelessWidget {
                 bottom: MediaQuery.of(context).size.height * 0.03,
               ),
               child: Text('Forget Password',
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontFamily: 'Montserrat',
-                      fontSize: 24,
-                      color: provider.appTheme == ThemeMode.light
-                          ? MyTheme.blackColor
-                          : MyTheme.whiteColor)),
+                  style: Theme.of(context).textTheme.titleMedium),
             ),
             Text('Please, enter your new password.',
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    fontFamily: 'Montserrat',
-                    fontSize: 14,
-                    color: provider.appTheme == ThemeMode.light
-                        ? MyTheme.blackColor
-                        : MyTheme.whiteColor)),
+                style: Theme.of(context).textTheme.titleSmall),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.08,
             ),
@@ -73,80 +63,59 @@ class ForgetChangePassword extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text('New Password',
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          fontFamily: 'Montserrat',
-                          color: provider.appTheme == ThemeMode.light
-                              ? MyTheme.blackColor
-                              : MyTheme.whiteColor,
-                          fontSize: 17,
-                          fontWeight: FontWeight.w600)),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 20),
-                    child: CustomTextFormField(
-                      isPassword: true,
-                      hintStyle: Theme.of(context)
-                          .textTheme
-                          .titleMedium!
-                          .copyWith(
-                              fontFamily: 'Cambo',
-                              color: provider.appTheme == ThemeMode.light
-                                  ? MyTheme.greyTextColor
-                                  : MyTheme.lightgreyColor),
-                      hint: '******',
-                      keyboardType: TextInputType.number,
-                      controller: passwordController,
-                      validator: (text) {
-                        if (text == null || text.trim().isEmpty) {
-                          return 'Please enter a new password';
-                        }
-                        if (text.length < 6) {
-                          return 'please enter at least 6 characters';
-                        }
-                        return null;
-                      },
-                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Text('New Password',
+                        style: Theme.of(context).textTheme.titleMedium),
+                  ),
+                  CustomTextFormField(
+                    isPassword: true,
+                    hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          color: provider.appTheme == ThemeMode.light
+                              ? MyTheme.blackColor.withOpacity(0.5)
+                              : MyTheme.whiteColor.withOpacity(0.5),
+                        ),
+                    hint: '******',
+                    keyboardType: TextInputType.number,
+                    controller: passwordController,
+                    validator: (text) {
+                      if (text == null || text.trim().isEmpty) {
+                        return 'Please enter a new password';
+                      }
+                      if (text.length < 6) {
+                        return 'please enter at least 6 characters';
+                      }
+                      return null;
+                    },
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.02,
                   ),
-                  Text('Confirm Password',
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                            color: provider.appTheme == ThemeMode.light
-                                ? MyTheme.blackColor
-                                : MyTheme.whiteColor,
-                            fontFamily: 'Montserrat',
-                            fontSize: 17,
-                            fontWeight: FontWeight.w600,
-                          )),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 20),
-                    child: CustomTextFormField(
-                      isPassword: true,
-                      hintStyle: Theme.of(context)
-                          .textTheme
-                          .titleMedium!
-                          .copyWith(
-                              fontFamily: 'Cambo',
-                              color: provider.appTheme == ThemeMode.light
-                                  ? MyTheme.greyTextColor
-                                  : MyTheme.lightgreyColor),
-                      hint: '******',
-                      keyboardType: TextInputType.number,
-                      controller: confirmPasswordController,
-                      validator: (text) {
-                        if (text == null || text.trim().isEmpty) {
-                          return 'Please enter your confirm password';
-                        }
-                        if (confirmPasswordController.text !=
-                            passwordController.text) {
-                          return 'Password mismatch';
-                        }
-                        return null;
-                      },
-                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Text('Confirm Password',
+                        style: Theme.of(context).textTheme.titleMedium),
+                  ),
+                  CustomTextFormField(
+                    isPassword: true,
+                    hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          color: provider.appTheme == ThemeMode.light
+                              ? MyTheme.blackColor.withOpacity(0.5)
+                              : MyTheme.whiteColor.withOpacity(0.5),
+                        ),
+                    hint: '******',
+                    keyboardType: TextInputType.number,
+                    controller: confirmPasswordController,
+                    validator: (text) {
+                      if (text == null || text.trim().isEmpty) {
+                        return 'Please enter your confirm password';
+                      }
+                      if (confirmPasswordController.text !=
+                          passwordController.text) {
+                        return 'Password mismatch';
+                      }
+                      return null;
+                    },
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.05,
@@ -162,11 +131,10 @@ class ForgetChangePassword extends StatelessWidget {
                           backgroundColor: MyTheme.primaryLight,
                           shape: const StadiumBorder()),
                       child: Text('Finish',
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: MyTheme.whiteColor,
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.w700)),
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .copyWith(color: MyTheme.whiteColor)),
                     ),
                   ),
                 ],

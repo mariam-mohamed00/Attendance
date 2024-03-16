@@ -1,8 +1,9 @@
 import 'package:attendance/home/tabs/profile/Profile.dart';
 import 'package:attendance/home/tabs/settings/setting_change_password.dart';
+import 'package:attendance/home/tabs/settings/setting_screen.dart';
 import 'package:attendance/home/tabs/settings/theme/theme_screen.dart';
 import 'package:attendance/providers/app_config_provider.dart';
-import 'package:attendance/splash.dart';
+import 'package:attendance/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,13 +37,11 @@ class MyApp extends StatelessWidget {
         ForgetPasswordScreen.routeName: (context) => ForgetPasswordScreen(),
         ForgetCode.routeName: (context) => ForgetCode(),
         ForgetChangePassword.routeName: (context) => ForgetChangePassword(),
-// <<<<<<< devYM
-        QRViewExample.routeName: (context) => QRViewExample()
-// =======
+        Scan.routeName: (context) => Scan(),
         SettingChangePassword.routeName: (context) => SettingChangePassword(),
-        ProfilePerson.routeName: (context) => ProfilePerson(),
-        ThemeScreen.routeName: (context) => ThemeScreen()
-// >>>>>>> development
+        Profile.routeName: (context) => Profile(),
+        ThemeScreen.routeName: (context) => ThemeScreen(),
+        SettingScreen.routeName: (context) => SettingScreen()
       },
       theme: MyTheme.lightTheme,
       darkTheme: MyTheme.darkTheme,

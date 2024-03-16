@@ -2,6 +2,7 @@ import 'package:attendance/home/tabs/settings/theme/theme_bottom_sheet.dart';
 import 'package:attendance/my_theme.dart';
 import 'package:attendance/providers/app_config_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 class ThemeScreen extends StatefulWidget {
@@ -21,38 +22,32 @@ class _ThemeScreenState extends State<ThemeScreen> {
           ? MyTheme.whiteColor
           : MyTheme.primaryDark,
       appBar: AppBar(
+        toolbarHeight: 80,
+        actions: [
+          Container(
+              child: Lottie.asset('assets/images/animation/theme.json',
+                  width: 100, fit: BoxFit.fill)),
+        ],
         backgroundColor: Colors.transparent,
-        elevation: 0.0,
-        toolbarHeight: 70,
-        title: const Text(
-          "Setting",
-          style: TextStyle(fontSize: 25),
-        ),
-        centerTitle: true,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(29),
-                  bottomRight: Radius.circular(29)),
-              gradient: LinearGradient(
-                  colors: [Colors.indigo, Colors.blue],
-                  begin: Alignment.center,
-                  end: Alignment.bottomCenter)),
-        ),
+        elevation: 0,
+        iconTheme: IconThemeData(
+            color: provider.appTheme == ThemeMode.light
+                ? MyTheme.blackColor
+                : MyTheme.whiteColor,
+            size: 35),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * 0.05,
-            vertical: MediaQuery.of(context).size.height * 0.02),
+          horizontal: MediaQuery.of(context).size.width * 0.05,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text('App Theme',
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontSize: 24,
-                    color: provider.appTheme == ThemeMode.light
-                        ? MyTheme.blackColor
-                        : MyTheme.whiteColor)),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleMedium!
+                    .copyWith(fontWeight: FontWeight.bold)),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.03,
             ),
@@ -61,7 +56,7 @@ class _ThemeScreenState extends State<ThemeScreen> {
                 showThemeBottomSheet();
               },
               child: Container(
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: MyTheme.whiteColor,
                   border: Border.all(
@@ -75,7 +70,10 @@ class _ThemeScreenState extends State<ThemeScreen> {
                   children: [
                     Text(
                         provider.appTheme == ThemeMode.light ? 'Light' : 'Dark',
-                        style: Theme.of(context).textTheme.titleMedium),
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            color: provider.appTheme == ThemeMode.light
+                                ? MyTheme.blackColor
+                                : MyTheme.primaryDark)),
                     Icon(Icons.arrow_drop_down),
                   ],
                 ),

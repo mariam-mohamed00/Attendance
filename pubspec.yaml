@@ -33,16 +33,14 @@ dependencies:
 
   flutter_native_splash: ^2.3.2
   bottom_navy_bar: ^6.0.0
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-# <<<<<<< devYM
   flutter_barcode_scanner: ^2.0.0
   qr_code_scanner: ^1.0.1
-# =======
   provider: ^6.1.2
   simple_shadow: ^0.3.1
-# >>>>>>> development
+  lottie: ^2.7.0
+  animated_splash_screen: ^1.3.0
+
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +67,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/images/animation/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
@@ -84,22 +83,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-
-    - family: Inika
-      fonts:
-        - asset: assets/fonts/Inika-Bold.ttf
-
     - family: Combo
       fonts:
         - asset: assets/fonts/Cambo-Regular.ttf
-
-    - family: Imprima
-      fonts:
-        - asset: assets/fonts/Imprima-Regular.ttf
-
-    - family: Poppins
-      fonts:
-        - asset: assets/fonts/Poppins-Regular.ttf
 
     - family: Montserrat
       fonts:

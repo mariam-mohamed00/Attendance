@@ -1,149 +1,171 @@
+import 'package:attendance/home/tabs/profile/custom_container_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-// <<<<<<< devYM
-// class profile extends StatefulWidget {
-//   const profile({Key? key}) : super(key: key);
-// =======
-class ProfilePerson extends StatefulWidget {
-  const ProfilePerson({Key? key}) : super(key: key);
+import '../../../providers/app_config_provider.dart';
+
+class Profile extends StatefulWidget {
+  const Profile({Key? key}) : super(key: key);
   static const String routeName = 'Profile';
-// >>>>>>> development
 
   @override
-  State<profile> createState() => _SignInPage1State();
+  State<Profile> createState() => _SignInPage1State();
 }
 
-class _SignInPage1State extends State<profile> {
+class _SignInPage1State extends State<Profile> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Form(
         key: _formKey,
         child: Center(
-          child: Card(
-            elevation: 8,
-            child: Container(
-              padding: const EdgeInsets.all(32.0),
-              constraints: const BoxConstraints(maxWidth: 350),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 0.0),
-                        child: Text("Welcome, name!",
-                            style: TextStyle(
-                              color: Colors.indigo,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                            ))),
-                    _gap(),
-                    Text(
-                      "Name",
-                      style: TextStyle(
-                        color: Colors.indigo,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 7),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: 'Name',
-                        hintText: 'Enter your email',
-                        prefixIcon: Icon(Icons.email_outlined),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                        ),
-                      ),
-                    ),
-                    _gap(),
-                    Text(
-                      "Name",
-                      style: TextStyle(
-                        color: Colors.indigo,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 7),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: 'Name',
-                        hintText: 'Enter your email',
-                        prefixIcon: Icon(Icons.email_outlined),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                        ),
-                      ),
-                    ),
-                    _gap(),
-                    Text(
-                      "Name",
-                      style: TextStyle(
-                        color: Colors.indigo,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 7),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: 'Name',
-                        hintText: 'Enter your email',
-                        prefixIcon: Icon(Icons.email_outlined),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                        ),
-                      ),
-                    ),
-                    _gap(),
-                    Text(
-                      "Name",
-                      style: TextStyle(
-                        color: Colors.indigo,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 7),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: 'Name',
-                        hintText: 'Enter your email',
-                        prefixIcon: Icon(Icons.email_outlined),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                        ),
-                      ),
-                    ),
-                    _gap(),
-                    Text(
-                      "Name",
-                      style: TextStyle(
-                        color: Colors.indigo,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 7),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: 'Name',
-                        hintText: 'Enter your email',
-                        prefixIcon: Icon(Icons.email_outlined),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                        ),
-                      ),
-                    ),
-                    _gap(),
-                  ],
-                ),
+          child: Container(
+            padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.01,
+                vertical: MediaQuery.of(context).size.height * 0.01),
+            constraints: BoxConstraints(
+                maxWidth: MediaQuery.of(context).size.width * 0.9),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Welcome, name!",
+                      style: Theme.of(context).textTheme.titleLarge),
+                  _gap(),
+                  _gap(),
+                  CustomContainerInProfile(
+                    fieldName: 'Name',
+                    text: 'name',
+                  ),
+                  _gap(),
+                  CustomContainerInProfile(
+                    fieldName: 'Your Account',
+                    text: 'account',
+                  ),
+                  _gap(),
+                  CustomContainerInProfile(
+                    fieldName: 'Department',
+                    text: 'dept',
+                  ),
+                  _gap(),
+                  CustomContainerInProfile(
+                    fieldName: 'GPA',
+                    text: 'gpa',
+                  ),
+                  _gap(),
+                  CustomContainerInProfile(
+                    fieldName: 'Subjects',
+                    text: 'sub',
+                  ),
+
+                  // Text(
+                  //   "Name",
+                  //   style: TextStyle(
+                  //     color: Colors.indigo,
+                  //     fontSize: 18,
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  // ),
+                  // SizedBox(height: 7),
+                  // TextFormField(
+                  //   decoration: const InputDecoration(
+                  //     labelText: 'Name',
+                  //     hintText: 'Enter your email',
+                  //     prefixIcon: Icon(Icons.email_outlined),
+                  //     border: OutlineInputBorder(
+                  //       borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                  //     ),
+                  //   ),
+                  // ),
+                  // _gap(),
+                  // Text(
+                  //   "Name",
+                  //   style: TextStyle(
+                  //     color: Colors.indigo,
+                  //     fontSize: 18,
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  // ),
+                  // SizedBox(height: 7),
+                  // // TextFormField(
+                  // //   decoration: const InputDecoration(
+                  // //     labelText: 'Name',
+                  // //     hintText: 'Enter your email',
+                  // //     prefixIcon: Icon(Icons.email_outlined),
+                  // //     border: OutlineInputBorder(
+                  // //       borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                  // //     ),
+                  // //   ),
+                  // // ),
+                  // _gap(),
+                  // Text(
+                  //   "Name",
+                  //   style: TextStyle(
+                  //     color: Colors.indigo,
+                  //     fontSize: 18,
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  // ),
+                  // SizedBox(height: 7),
+                  // TextFormField(
+                  //   decoration: const InputDecoration(
+                  //     labelText: 'Name',
+                  //     hintText: 'Enter your email',
+                  //     prefixIcon: Icon(Icons.email_outlined),
+                  //     border: OutlineInputBorder(
+                  //       borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                  //     ),
+                  //   ),
+                  // ),
+                  // _gap(),
+                  // Text(
+                  //   "Name",
+                  //   style: TextStyle(
+                  //     color: Colors.indigo,
+                  //     fontSize: 18,
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  // ),
+                  // SizedBox(height: 7),
+                  // TextFormField(
+                  //   decoration: const InputDecoration(
+                  //     labelText: 'Name',
+                  //     hintText: 'Enter your email',
+                  //     prefixIcon: Icon(Icons.email_outlined),
+                  //     border: OutlineInputBorder(
+                  //       borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                  //     ),
+                  //   ),
+                  // ),
+                  // _gap(),
+                  // Text(
+                  //   "Name",
+                  //   style: TextStyle(
+                  //     color: Colors.indigo,
+                  //     fontSize: 18,
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  // ),
+                  // SizedBox(height: 7),
+                  // TextFormField(
+                  //   decoration: const InputDecoration(
+                  //     labelText: 'Name',
+                  //     hintText: 'Enter your email',
+                  //     prefixIcon: Icon(Icons.email_outlined),
+                  //     border: OutlineInputBorder(
+                  //       borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                  //     ),
+                  //   ),
+                  // ),
+                  // _gap(),
+                ],
               ),
             ),
           ),

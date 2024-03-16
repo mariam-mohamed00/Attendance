@@ -28,11 +28,10 @@ class CustomTextFormField extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.all(10.0),
         child: TextFormField(
-          style: TextStyle(
-            color: provider.appTheme == ThemeMode.light
-                ? MyTheme.blackColor
-                : MyTheme.whiteColor,
-          ),
+          style: Theme.of(context).textTheme.titleSmall!.copyWith(
+              color: provider.appTheme == ThemeMode.light
+                  ? MyTheme.blackColor
+                  : MyTheme.whiteColor),
           obscureText: isPassword,
           controller: controller,
           validator: validator,

@@ -8,6 +8,8 @@ import '../../../my_theme.dart';
 import 'setting_change_password.dart';
 
 class SettingScreen extends StatelessWidget {
+  static const String routeName = 'Setting Screen';
+
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
@@ -34,10 +36,7 @@ class SettingScreen extends StatelessWidget {
                           ? MyTheme.blackColor
                           : MyTheme.whiteColor),
                   Text('Change Password',
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          color: provider.appTheme == ThemeMode.light
-                              ? MyTheme.blackColor
-                              : MyTheme.whiteColor)),
+                      style: Theme.of(context).textTheme.titleMedium),
                   Icon(Icons.arrow_forward_ios_sharp,
                       color: provider.appTheme == ThemeMode.light
                           ? MyTheme.blackColor
@@ -65,11 +64,7 @@ class SettingScreen extends StatelessWidget {
                         ? MyTheme.blackColor
                         : MyTheme.whiteColor,
                   ),
-                  Text('Theme',
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          color: provider.appTheme == ThemeMode.light
-                              ? MyTheme.blackColor
-                              : MyTheme.whiteColor)),
+                  Text('Theme', style: Theme.of(context).textTheme.titleMedium),
                   Icon(Icons.arrow_forward_ios_sharp,
                       color: provider.appTheme == ThemeMode.light
                           ? MyTheme.blackColor
@@ -96,10 +91,7 @@ class SettingScreen extends StatelessWidget {
                           ? MyTheme.blackColor
                           : MyTheme.whiteColor),
                   Text('Log out',
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          color: provider.appTheme == ThemeMode.light
-                              ? MyTheme.blackColor
-                              : MyTheme.whiteColor)),
+                      style: Theme.of(context).textTheme.titleMedium),
                   Icon(Icons.arrow_forward_ios_sharp,
                       color: provider.appTheme == ThemeMode.light
                           ? MyTheme.blackColor

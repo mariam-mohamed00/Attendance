@@ -42,10 +42,9 @@ class ThemeBottomSheet extends StatelessWidget {
         children: [
           Text(
             text,
-            style: Theme.of(context)
-                .textTheme
-                .titleMedium!
-                .copyWith(color: MyTheme.primaryLight, fontSize: 18),
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  color: MyTheme.primaryLight,
+                ),
           ),
           Icon(
             Icons.check,
@@ -66,8 +65,7 @@ class ThemeBottomSheet extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(text,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                  fontSize: 18,
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
                   color: provider.appTheme == ThemeMode.light
                       ? MyTheme.blackColor
                       : MyTheme.whiteColor)),

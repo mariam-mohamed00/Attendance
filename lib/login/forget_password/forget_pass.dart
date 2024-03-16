@@ -39,11 +39,8 @@ class ForgetPasswordScreen extends StatelessWidget {
               Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
             SimpleShadow(
               opacity: 0.25,
-              // Default: 0.5
               color: MyTheme.primaryLight,
-              // Default: Black
               offset: const Offset(26, 10),
-              // Default: Offset(2, 2)
               sigma: 3,
               child: Image(
                 width: double.infinity,
@@ -58,70 +55,48 @@ class ForgetPasswordScreen extends StatelessWidget {
                 bottom: MediaQuery.of(context).size.height * 0.03,
               ),
               child: Text('Forget Password',
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontFamily: 'Montserrat',
-                      fontSize: 24,
-                      color: provider.appTheme == ThemeMode.light
-                          ? MyTheme.blackColor
-                          : MyTheme.whiteColor)),
+                  style: Theme.of(context).textTheme.titleMedium),
             ),
             Text(
-                'Enter your E-mail to send a mail to re-assign a new password for your account.',
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    fontFamily: 'Montserrat',
-                    fontSize: 14,
-                    color: provider.appTheme == ThemeMode.light
-                        ? MyTheme.blackColor
-                        : MyTheme.whiteColor)),
+                'Please, enter your e-mail address to request a password reset for your account.',
+                style: Theme.of(context).textTheme.titleSmall),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.08,
             ),
-            Text('E-mail',
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: provider.appTheme == ThemeMode.light
-                        ? MyTheme.blackColor
-                        : MyTheme.whiteColor,
-                    fontFamily: 'Montserrat',
-                    fontSize: 17,
-                    fontWeight: FontWeight.w600)),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Text('E-mail',
+                  style: Theme.of(context).textTheme.titleMedium),
+            ),
             Form(
               key: formKey,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 20),
-                    child: CustomTextFormField(
-                      hintStyle: Theme.of(context)
-                          .textTheme
-                          .titleMedium!
-                          .copyWith(
-                              fontFamily: 'Cambo',
-                              color: provider.appTheme == ThemeMode.light
-                                  ? MyTheme.greyTextColor
-                                  : MyTheme.lightgreyColor),
-                      hint: 'lorem@gmail.com',
-                      keyboardType: TextInputType.emailAddress,
-                      controller: emailController,
-                      validator: (text) {
-                        if (text == null || text.trim().isEmpty) {
-                          return 'Please enter your email';
-                        }
-                        bool emailValid = RegExp(
-                                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                            .hasMatch(text);
-                        if (!emailValid) {
-                          return 'Please enter a valid email';
-                        }
-
-                        return null;
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.05,
-                  ),
-                  ElevatedButton(
+              child: Column(children: [
+                CustomTextFormField(
+                  hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        color: provider.appTheme == ThemeMode.light
+                            ? MyTheme.blackColor.withOpacity(0.5)
+                            : MyTheme.whiteColor.withOpacity(0.5),
+                      ),
+                  hint: 'example@email.com',
+                  keyboardType: TextInputType.emailAddress,
+                  controller: emailController,
+                  validator: (text) {
+                    if (text == null || text.trim().isEmpty) {
+                      return 'Please enter your email';
+                    }
+                    bool emailValid = RegExp(
+                            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                        .hasMatch(text);
+                    if (!emailValid) {
+                      return 'Please enter a valid email';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.05,
+                ),
+                ElevatedButton(
                     onPressed: () {
                       check(context);
                     },
@@ -131,18 +106,11 @@ class ForgetPasswordScreen extends StatelessWidget {
                         backgroundColor: MyTheme.primaryLight,
                         shape: const StadiumBorder()),
                     child: Text('Next',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: MyTheme.whiteColor,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w700)),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.05,
-                  ),
-                  // Image.asset('assets/images/forget_password.png')
-                ],
-              ),
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(color: Colors.white)))
+              ]),
             ),
           ]),
         ),

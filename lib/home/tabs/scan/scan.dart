@@ -1,17 +1,21 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:attendance/home/HomeScreen.dart';
+import 'package:attendance/my_theme.dart';
+import 'package:attendance/providers/app_config_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-class QRViewExample extends StatefulWidget {
+class Scan extends StatefulWidget {
   static const String routeName = 'Scan Screen';
 
   @override
-  State<StatefulWidget> createState() => _QRViewExampleState();
+  State<StatefulWidget> createState() => _ScanState();
 }
 
-class _QRViewExampleState extends State<QRViewExample> {
+class _ScanState extends State<Scan> {
   Barcode? result;
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
@@ -29,25 +33,52 @@ class _QRViewExampleState extends State<QRViewExample> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
       body: Stack(
         children: <Widget>[
           Expanded(flex: 0, child: _buildQrView(context)),
           if (result != null)
             AlertDialog(
+              backgroundColor: provider.appTheme == ThemeMode.light
+                  ? MyTheme.whiteColor
+                  : MyTheme.primaryDark,
               actions: [
                 TextButton(
-                  onPressed: () {},
-                  child: const Text("Close"),
-                ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.of(context)
+                        .pushReplacementNamed(HomeScreen.routeName);
+                  },
+                  child: Text(
+                    "Close",
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        fontSize: 16,
+                        color:
+                            // MyTheme.primaryLight
+                            provider.appTheme == ThemeMode.light
+                                ? MyTheme.primaryLight
+                                : MyTheme.whiteColor),
+                  ),
+                )
               ],
-              title: const Text(
-                "Scan Successfully",
-                style: TextStyle(color: Colors.blue, fontSize: 25.0),
+              title: Text("Scan Successfully",
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color:
+                          // MyTheme.primaryLight
+                          provider.appTheme == ThemeMode.light
+                              ? MyTheme.primaryLight
+                              : MyTheme.whiteColor,
+                      fontWeight: FontWeight.bold)),
+              icon: Icon(Icons.verified, color: Colors.green, size: 45),
+              contentPadding: EdgeInsets.symmetric(horizontal: 40, vertical: 5),
+              content: Text(
+                'Thanks for being here, Best Wishes.',
+                style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    color: provider.appTheme == ThemeMode.light
+                        ? MyTheme.blackColor
+                        : MyTheme.primaryLight),
               ),
-              icon: Icon(Icons.verified, color: Colors.green, size: 35),
-              contentPadding: const EdgeInsets.all(20.0),
-              content: const Text('Thanks for being here , Best Wishes'),
             )
         ],
       ),
