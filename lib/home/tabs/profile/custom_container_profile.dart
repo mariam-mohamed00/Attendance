@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../my_theme.dart';
-import '../../../providers/app_config_provider.dart';
 
 class CustomContainerInProfile extends StatelessWidget {
   String text;
@@ -12,8 +10,6 @@ class CustomContainerInProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<AppConfigProvider>(context);
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

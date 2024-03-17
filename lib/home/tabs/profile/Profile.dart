@@ -18,7 +18,6 @@ class _SignInPage1State extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
-
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Form(
@@ -64,107 +63,6 @@ class _SignInPage1State extends State<Profile> {
                     fieldName: 'Subjects',
                     text: 'sub',
                   ),
-
-                  // Text(
-                  //   "Name",
-                  //   style: TextStyle(
-                  //     color: Colors.indigo,
-                  //     fontSize: 18,
-                  //     fontWeight: FontWeight.bold,
-                  //   ),
-                  // ),
-                  // SizedBox(height: 7),
-                  // TextFormField(
-                  //   decoration: const InputDecoration(
-                  //     labelText: 'Name',
-                  //     hintText: 'Enter your email',
-                  //     prefixIcon: Icon(Icons.email_outlined),
-                  //     border: OutlineInputBorder(
-                  //       borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                  //     ),
-                  //   ),
-                  // ),
-                  // _gap(),
-                  // Text(
-                  //   "Name",
-                  //   style: TextStyle(
-                  //     color: Colors.indigo,
-                  //     fontSize: 18,
-                  //     fontWeight: FontWeight.bold,
-                  //   ),
-                  // ),
-                  // SizedBox(height: 7),
-                  // // TextFormField(
-                  // //   decoration: const InputDecoration(
-                  // //     labelText: 'Name',
-                  // //     hintText: 'Enter your email',
-                  // //     prefixIcon: Icon(Icons.email_outlined),
-                  // //     border: OutlineInputBorder(
-                  // //       borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                  // //     ),
-                  // //   ),
-                  // // ),
-                  // _gap(),
-                  // Text(
-                  //   "Name",
-                  //   style: TextStyle(
-                  //     color: Colors.indigo,
-                  //     fontSize: 18,
-                  //     fontWeight: FontWeight.bold,
-                  //   ),
-                  // ),
-                  // SizedBox(height: 7),
-                  // TextFormField(
-                  //   decoration: const InputDecoration(
-                  //     labelText: 'Name',
-                  //     hintText: 'Enter your email',
-                  //     prefixIcon: Icon(Icons.email_outlined),
-                  //     border: OutlineInputBorder(
-                  //       borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                  //     ),
-                  //   ),
-                  // ),
-                  // _gap(),
-                  // Text(
-                  //   "Name",
-                  //   style: TextStyle(
-                  //     color: Colors.indigo,
-                  //     fontSize: 18,
-                  //     fontWeight: FontWeight.bold,
-                  //   ),
-                  // ),
-                  // SizedBox(height: 7),
-                  // TextFormField(
-                  //   decoration: const InputDecoration(
-                  //     labelText: 'Name',
-                  //     hintText: 'Enter your email',
-                  //     prefixIcon: Icon(Icons.email_outlined),
-                  //     border: OutlineInputBorder(
-                  //       borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                  //     ),
-                  //   ),
-                  // ),
-                  // _gap(),
-                  // Text(
-                  //   "Name",
-                  //   style: TextStyle(
-                  //     color: Colors.indigo,
-                  //     fontSize: 18,
-                  //     fontWeight: FontWeight.bold,
-                  //   ),
-                  // ),
-                  // SizedBox(height: 7),
-                  // TextFormField(
-                  //   decoration: const InputDecoration(
-                  //     labelText: 'Name',
-                  //     hintText: 'Enter your email',
-                  //     prefixIcon: Icon(Icons.email_outlined),
-                  //     border: OutlineInputBorder(
-                  //       borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                  //     ),
-                  //   ),
-                  // ),
-                  // _gap(),
                 ],
               ),
             ),

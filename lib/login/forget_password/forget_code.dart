@@ -94,7 +94,6 @@ class ForgetCode extends StatelessWidget {
                         borderRadius: BorderRadius.circular(15),
                       ),
                     ),
-                    // child:
                   ),
                 ),
                 SizedBox(
@@ -124,7 +123,6 @@ class ForgetCode extends StatelessWidget {
                         borderRadius: BorderRadius.circular(15),
                       ),
                     ),
-                    // child:
                   ),
                 ),
                 SizedBox(
@@ -154,7 +152,6 @@ class ForgetCode extends StatelessWidget {
                         borderRadius: BorderRadius.circular(15),
                       ),
                     ),
-                    // child:
                   ),
                 ),
                 SizedBox(

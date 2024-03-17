@@ -24,7 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
     var provider = Provider.of<AppConfigProvider>(context);
 
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
       body: Stack(fit: StackFit.expand, children: [
         Image.asset(
           fit: BoxFit.fill,
@@ -50,15 +49,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         .titleLarge!
                         .copyWith(fontSize: 40)),
               )),
-              // Divider(
-              //   color: provider.appTheme == ThemeMode.light
-              //       ? MyTheme.blackColor
-              //       : MyTheme.whiteColor,
-              //   thickness: 4,
-              //   height: 0,
-              //   indent: MediaQuery.of(context).size.width * 0.3,
-              //   endIndent: MediaQuery.of(context).size.height * 0.135,
-              // ),
               Form(
                 key: formKey,
                 child: Column(

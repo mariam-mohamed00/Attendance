@@ -32,11 +32,8 @@ class ForgetChangePassword extends StatelessWidget {
               Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
             SimpleShadow(
               opacity: 0.25,
-              // Default: 0.5
               color: MyTheme.primaryLight,
-              // Default: Black
               offset: const Offset(26, 10),
-              // Default: Offset(2, 2)
               sigma: 3,
               child: Image(
                 width: double.infinity,
