@@ -1,4 +1,5 @@
 import 'package:attendance/providers/app_config_provider.dart';
+import 'package:attendance/services/auth.service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:provider/provider.dart';
@@ -21,19 +22,22 @@ void main() {
   // Prevent screenshots
   FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
 
-  runApp(ChangeNotifierProvider(
-    create: (context) => AppConfigProvider(),
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => AppConfigProvider(),
+      ),
+      Provider(create: (_) => AuthService())
+    ],
     child: MyApp(),
   ));
 }
 
 class MyApp extends StatelessWidget {
-  late AppConfigProvider provider;
-
   @override
   Widget build(BuildContext context) {
-    provider = Provider.of<AppConfigProvider>(context);
-    initSharedPref();
+    final AppConfigProvider provider = Provider.of<AppConfigProvider>(context);
+    initSharedPref(provider);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -56,7 +60,7 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  Future<void> initSharedPref() async {
+  Future<void> initSharedPref(AppConfigProvider provider) async {
     final prefs = await SharedPreferences.getInstance();
     var isDark = prefs.getBool('isDark');
     if (isDark == true) {
@@ -66,4 +70,3 @@ class MyApp extends StatelessWidget {
     }
   }
 }
-
