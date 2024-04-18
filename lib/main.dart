@@ -1,21 +1,26 @@
 import 'package:attendance/providers/app_config_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'home/HomeScreen.dart';
-import 'home/tabs/profile/Profile.dart';
-import 'home/tabs/scan/scan.dart';
-import 'home/tabs/settings/setting_change_password.dart';
-import 'home/tabs/settings/setting_screen.dart';
-import 'home/tabs/settings/theme/theme_screen.dart';
-import 'login/forget_password/forget_change_password.dart';
-import 'login/forget_password/forget_code.dart';
-import 'login/forget_password/forget_pass.dart';
-import 'login/login_screen.dart';
+import 'home/screens/HomeScreen.dart';
+import 'home/screens/tabs/Profile.dart';
+import 'home/screens/tabs/scan.dart';
+import 'home/screens/tabs/settings/setting_change_password.dart';
+import 'home/screens/tabs/settings/setting_screen.dart';
+import 'home/screens/tabs/settings/theme_screen.dart';
+import 'login/screens/forget_password/forget_change_password.dart';
+import 'login/screens/forget_password/forget_code.dart';
+import 'login/screens/forget_password/forget_pass.dart';
+import 'login/screens/login/login_screen.dart';
 import 'my_theme.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Prevent screenshots
+  FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+
   runApp(ChangeNotifierProvider(
     create: (context) => AppConfigProvider(),
     child: MyApp(),
@@ -61,3 +66,4 @@ class MyApp extends StatelessWidget {
     }
   }
 }
+
