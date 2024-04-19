@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:attendance/my_theme.dart';
 import 'package:attendance/providers/app_config_provider.dart';
+import 'package:attendance/services/qrcode.service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -20,6 +21,7 @@ class _ScanState extends State<Scan> {
   Barcode? result;
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+  final qrCodeService = QRCodeService();
 
   // In order to get hot reload to work we need to pause the camera if the platform
   // is android, or resume the camera if the platform is iOS.
@@ -112,6 +114,7 @@ class _ScanState extends State<Scan> {
       this.controller = controller;
     });
     controller.scannedDataStream.listen((scanData) {
+      qrCodeService.scanQRCode(scanData.toString());
       setState(() {
         result = scanData;
       });

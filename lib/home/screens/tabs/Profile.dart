@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:attendance/home/widgets/custom_container_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -11,6 +14,23 @@ class Profile extends StatefulWidget {
 
 class _SignInPage1State extends State<Profile> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  String name = "";
+
+  initState() {
+    super.initState();
+    _getCurrentUser();
+  }
+
+  _getCurrentUser() async {
+    final prefs = await SharedPreferences.getInstance();
+    var currentUser = prefs.getString('currentUser');
+    if (currentUser != null) {
+      setState(() {
+        name = json.decode(currentUser)['name'];
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +57,7 @@ class _SignInPage1State extends State<Profile> {
                   _gap(),
                   CustomContainerInProfile(
                     fieldName: 'Name',
-                    text: 'name',
+                    text: name,
                   ),
                   _gap(),
                   CustomContainerInProfile(
