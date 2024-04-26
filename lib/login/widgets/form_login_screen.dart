@@ -1,4 +1,5 @@
 import 'package:attendance/login/widgets/remeber_check.dart';
+import 'package:attendance/services/auth.service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,6 +25,7 @@ class _FormLoginScreenState extends State<FormLoginScreen> {
   TextEditingController passwordController = TextEditingController();
 
   bool isObscure = true;
+  var authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -142,10 +144,21 @@ class _FormLoginScreenState extends State<FormLoginScreen> {
     );
   }
 
-  void login() {
-    if (formKey.currentState!.validate() == true) {
-      Navigator.of(context)
-          .pushNamedAndRemoveUntil(HomeScreen.routeName, (route) => false);
+  void login() async {
+    try {
+      if (formKey.currentState!.validate() == true) {
+        await authService.login(emailController.text, passwordController.text);
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil(HomeScreen.routeName, (route) => false);
+      }
+    } catch (e) {
+      var snackBar = SnackBar(
+          backgroundColor: Colors.white,
+          content: Text(
+            e.toString(),
+            style: TextStyle(color: Colors.red),
+          ));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 
