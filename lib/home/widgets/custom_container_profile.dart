@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../my_theme.dart';
 
 class CustomContainerInProfile extends StatelessWidget {
-  String text;
+  var text;
   String fieldName;
 
   CustomContainerInProfile({required this.text, required this.fieldName});

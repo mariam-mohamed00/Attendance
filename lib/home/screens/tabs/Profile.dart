@@ -16,6 +16,9 @@ class _SignInPage1State extends State<Profile> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   String name = "";
+  String email = "";
+  String role = "";
+  List<String> courses = [];
 
   initState() {
     super.initState();
@@ -28,6 +31,11 @@ class _SignInPage1State extends State<Profile> {
     if (currentUser != null) {
       setState(() {
         name = json.decode(currentUser)['name'];
+        email = json.decode(currentUser)['email'];
+        role = json.decode(currentUser)['role'];
+        for (int i = 0; i < json.decode(currentUser)["courses"].length; i++) {
+          courses.add(json.decode(currentUser)["courses"][i]["courseName"]);
+        }
       });
     }
   }
@@ -51,7 +59,7 @@ class _SignInPage1State extends State<Profile> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Welcome, name!",
+                  Text("Welcome , $name !",
                       style: Theme.of(context).textTheme.titleLarge),
                   _gap(),
                   _gap(),
@@ -62,23 +70,21 @@ class _SignInPage1State extends State<Profile> {
                   _gap(),
                   CustomContainerInProfile(
                     fieldName: 'Your Account',
-                    text: 'account',
+                    text: email,
                   ),
                   _gap(),
                   CustomContainerInProfile(
-                    fieldName: 'Department',
-                    text: 'dept',
+                    fieldName: 'role',
+                    text: role,
                   ),
                   _gap(),
-                  CustomContainerInProfile(
-                    fieldName: 'GPA',
-                    text: 'gpa',
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: courses.length,
+                    itemBuilder: (context, index) => CustomContainerInProfile(
+                        text: courses[index], fieldName: "Course Name"),
                   ),
                   _gap(),
-                  CustomContainerInProfile(
-                    fieldName: 'Subjects',
-                    text: 'sub',
-                  ),
                 ],
               ),
             ),

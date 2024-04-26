@@ -1,6 +1,9 @@
+import 'package:attendance/home/screens/tabs/qr_code_cubit.dart';
+import 'package:attendance/home/screens/tabs/settings/change_password_cubit.dart';
 import 'package:attendance/providers/app_config_provider.dart';
 import 'package:attendance/services/auth.service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -39,24 +42,34 @@ class MyApp extends StatelessWidget {
     final AppConfigProvider provider = Provider.of<AppConfigProvider>(context);
     initSharedPref(provider);
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: LoginScreen.routeName,
-      routes: {
-        LoginScreen.routeName: (context) => LoginScreen(),
-        HomeScreen.routeName: (context) => HomeScreen(),
-        ForgetPasswordScreen.routeName: (context) => ForgetPasswordScreen(),
-        ForgetCode.routeName: (context) => ForgetCode(),
-        ForgetChangePassword.routeName: (context) => ForgetChangePassword(),
-        Scan.routeName: (context) => Scan(),
-        SettingChangePassword.routeName: (context) => SettingChangePassword(),
-        Profile.routeName: (context) => Profile(),
-        ThemeScreen.routeName: (context) => ThemeScreen(),
-        SettingScreen.routeName: (context) => SettingScreen()
-      },
-      theme: MyTheme.lightTheme,
-      darkTheme: MyTheme.darkTheme,
-      themeMode: provider.appTheme,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => QrCodeCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ChangePasswordCubit(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: LoginScreen.routeName,
+        routes: {
+          LoginScreen.routeName: (context) => LoginScreen(),
+          HomeScreen.routeName: (context) => HomeScreen(),
+          ForgetPasswordScreen.routeName: (context) => ForgetPasswordScreen(),
+          ForgetCode.routeName: (context) => ForgetCode(),
+          ForgetChangePassword.routeName: (context) => ForgetChangePassword(),
+          Scan.routeName: (context) => Scan(),
+          SettingChangePassword.routeName: (context) => SettingChangePassword(),
+          Profile.routeName: (context) => Profile(),
+          ThemeScreen.routeName: (context) => ThemeScreen(),
+          SettingScreen.routeName: (context) => SettingScreen()
+        },
+        theme: MyTheme.lightTheme,
+        darkTheme: MyTheme.darkTheme,
+        themeMode: provider.appTheme,
+      ),
     );
   }
 
