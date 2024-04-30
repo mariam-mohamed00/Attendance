@@ -49,6 +49,9 @@ dependencies:
   dio: ^5.4.3+1
   flutter_bloc: ^8.1.5
   dartz: ^0.10.1
+  easy_geofencing: ^0.2.0
+  geocoding: ^2.0.1
+
 
 
 flutter_icons:

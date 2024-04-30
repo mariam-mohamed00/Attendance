@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -54,6 +55,11 @@ Map<String, String> Function(Object) mapError = (Object error) {
           var message = errorString['error']['errors'][0]['message'];
           return {
             "message": message ?? "Wrong Credentials!",
+          };
+        case 400:
+          var message = errorString['message'];
+          return {
+            "message": message ?? "Password is not correct!",
           };
         case 401:
           var message = errorString['error']['errors'][0]['message'];
