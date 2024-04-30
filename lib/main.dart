@@ -1,5 +1,6 @@
 import 'package:attendance/home/screens/tabs/qr_code_cubit.dart';
 import 'package:attendance/home/screens/tabs/settings/change_password_cubit.dart';
+import 'package:attendance/home/screens/tabs/settings/logout_cubit.dart';
 import 'package:attendance/providers/app_config_provider.dart';
 import 'package:attendance/services/auth.service.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ChangePasswordCubit(),
+        ),
+        BlocProvider(
+          create: (context) => LogoutCubit(),
         ),
       ],
       child: MaterialApp(

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:attendance/utils/dio.interceptor.dart';
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
@@ -24,18 +24,25 @@ class AuthService {
       print("response: ${response.data}");
       return response.data;
     } on DioException catch (e) {
-      print("EEEEEE caught by the exception : $e");
+      print("EEEEEE caught by the exception : ${e.response?.statusCode}");
       throw parseExceptionAndHandle(e);
     }
   }
 
-  Future<dynamic> logout(String email) async {
+  Future<Either<String, String>> logout() async {
+    final prefs = await SharedPreferences.getInstance();
+    var token = await prefs.get('access_token');
     try {
-      var body = {"email": email};
-      var response = await dioClient().post("students/login", data: body);
-      return response.data;
+      var body = {'Authorization': 'Bearer $token'};
+      var response = await dioClient().get(
+        "students/logout",
+        options: Options(
+          headers: body,
+        ),
+      );
+      return right("logout Successfully");
     } on DioException catch (e) {
-      throw parseExceptionAndHandle(e);
+      return left(e.message.toString());
     }
   }
 }
