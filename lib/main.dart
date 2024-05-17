@@ -1,25 +1,25 @@
-import 'package:attendance/home/screens/tabs/qr_code_cubit.dart';
-import 'package:attendance/home/screens/tabs/settings/change_password_cubit.dart';
-import 'package:attendance/home/screens/tabs/settings/logout_cubit.dart';
-import 'package:attendance/providers/app_config_provider.dart';
-import 'package:attendance/services/auth.service.dart';
+import 'package:attendance/core/providers/app_config_provider.dart';
+import 'package:attendance/core/utils/my_theme.dart';
+import 'package:attendance/features/home/presentation/manager/qr_code/qr_code_cubit.dart';
+import 'package:attendance/features/home/presentation/views/setting/presentation/manager/setting_change_password/change_password_cubit.dart';
+import 'package:attendance/features/home/presentation/views/setting/presentation/manager/setting_log_out/logout_cubit.dart';
+import 'package:attendance/features/login/data/auth.service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'home/screens/HomeScreen.dart';
-import 'home/screens/tabs/Profile.dart';
-import 'home/screens/tabs/scan.dart';
-import 'home/screens/tabs/settings/setting_change_password.dart';
-import 'home/screens/tabs/settings/setting_screen.dart';
-import 'home/screens/tabs/settings/theme_screen.dart';
-import 'login/screens/forget_password/forget_change_password.dart';
-import 'login/screens/forget_password/forget_code.dart';
-import 'login/screens/forget_password/forget_pass.dart';
-import 'login/screens/login/login_screen.dart';
-import 'my_theme.dart';
+import 'features/forget_password/presentation/views/forget_change_password_screen.dart';
+import 'features/forget_password/presentation/views/forget_code_screen.dart';
+import 'features/forget_password/presentation/views/forget_pass_screen.dart';
+import 'features/home/presentation/views/home_screen.dart';
+import 'features/home/presentation/views/profile_screen.dart';
+import 'features/home/presentation/views/scan_screen.dart';
+import 'features/home/presentation/views/setting/presentation/views/setting_change_password_screen.dart';
+import 'features/home/presentation/views/setting/presentation/views/setting_screen.dart';
+import 'features/home/presentation/views/setting/presentation/views/theme_screen.dart';
+import 'features/login/presentation/views/login_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,11 +62,13 @@ class MyApp extends StatelessWidget {
           LoginScreen.routeName: (context) => LoginScreen(),
           HomeScreen.routeName: (context) => HomeScreen(),
           ForgetPasswordScreen.routeName: (context) => ForgetPasswordScreen(),
-          ForgetCode.routeName: (context) => ForgetCode(),
-          ForgetChangePassword.routeName: (context) => ForgetChangePassword(),
-          Scan.routeName: (context) => Scan(),
-          SettingChangePassword.routeName: (context) => SettingChangePassword(),
-          Profile.routeName: (context) => Profile(),
+          ForgetCodeScreen.routeName: (context) => ForgetCodeScreen(),
+          ForgetChangePasswordScreen.routeName: (context) =>
+              ForgetChangePasswordScreen(),
+          ScanScreen.routeName: (context) => ScanScreen(),
+          SettingChangePasswordScreen.routeName: (context) =>
+              SettingChangePasswordScreen(),
+          ProfileScreen.routeName: (context) => ProfileScreen(),
           ThemeScreen.routeName: (context) => ThemeScreen(),
           SettingScreen.routeName: (context) => SettingScreen()
         },

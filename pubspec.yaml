@@ -52,6 +52,9 @@ dependencies:
   easy_geofencing: ^0.2.0
   geocoding: ^2.0.1
 
+  timer_count_down: ^2.2.0
+
+  image_picker: ^1.0.8
 
 
 flutter_icons:
